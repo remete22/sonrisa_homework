@@ -61,15 +61,112 @@ After checking the config realized AI added dotenv while Nuxt provides access to
 
 Found the prisma files using dotenv and fixed the issue. I had to remove dotenv manually.
 
-
 ----
 
 **Prompt 4:**
 
+Now go for the auth flow:
+1. Config sidebase auth for credentials (email, password)
+2. Create the catch all server/api/auth/[...].ts
+3. Create a login page in pages/login with email password fields, a keep me logged in checkbox and a login button. Use shadcn for the components. This page isn't protected by auth use definePageMeta to setup this. Use sidebase auth middleware.
 
 **Logic:**
 
+The admin will need an authentication flow and the easiest way to set this up with a robust and battle tested library like @sidebase/nuxt-auth
 
-**Answer 3:**
+**Answer 4:**
+
+Created 4 todos:
+1. Explore current project state
+2. Configure sidebase auth with vredentials
+3. Create auth catch-all API route
+4. Create login page with shadcn components
+
+Had to stop the running in the middle and revert all changes and modify teh prompt beacuse it started to generate server code into app folder adn started to create uneccessary config files.
+
+----
+
+**Prompt 5:**
+
+Let's implement the Auth flow immediately, keeping in mind this is a strict Nuxt 4 application layer structure. 
+
+Do NOT generate any configuration files, and do NOT use Shadcn CLI. Write pure, standard inline Tailwind CSS for the UI so it works out of the box.
+
+Please generate the following files with these exact paths:
+
+1. **`nuxt.config.ts` Update:**
+Configure `@sidebase/nuxt-auth` to use the `local` provider with a credentials strategy. Ensure the module is properly registered.
+
+2. **`server/api/auth/[...].ts` (Server Side):**
+Create the catch-all auth handler using `NuxtAuthHandler`. Inside the `authorize` function, look up the user using `usePrisma()`, and verify their password against the seeded credentials using Node's native `crypto` module.
+
+3. **`app/pages/login.vue` (Client Side):**
+Create the login page inside the Nuxt 4 frontend directory (`app/pages/`). 
+- Include email, password, a "Keep me logged in" checkbox, and a login button using standard HTML elements styled with inline Tailwind classes.
+- Use `definePageMeta({ auth: { unauthenticatedOnly: true, navigateAuthenticatedTo: '/' } })` to set up the sidebase auth middleware behavior for this page.
+
+Do not create a tailwind config just use the tailwind 4 Nuxt integration method
+
+Give me the complete, production-ready code for these files now so we can test the `npm run dev` environment immediately.
+
+**Logic:**
+
+The more precise prompt should prevent bad folder and config creation
+
+**Answer 5:**
+
+Created 4 todos:
+1. Update nuxt.config.ts with auth
+2. Create catch-all handler
+3. Create login page
+4. Add AUTH_secret and fix app.vue
+
+----
+
+**Prompt 6:**
+
+make the app redirect to login when auth fails
+
+**Logic:**
+
+Setting global middleware for unauthenticated users
+
+**Answer 6:**
+
+Made the requested change. Had to manually update nuxt.config it was faulty.
+
+----
+
+**Prompt 7:**
+
+the login ran into an issue:
+[@sidebase/nuxt-auth] Recursion detected at /session. Have you set the correct auth.baseURL?
+
+The config seems to be correct but Nuxt doesn't seem to find the session
+
+**Logic:**
+
+Tried to check on the work by visiting the login page on the dev server but failed to do so. Checked the Nitro's console log and saw that sidebase wantod to visit /session instead /api/auth/session
+
+**Answer 7:**
+
+Tried to solve the issue but failed. I had to stop it after a while and put auth on hold.
 
 
+----
+
+**Prompt 8:**
+
+Auth doesn't seem to work right now. Remove sidebase-auth from teh project entirely. Remove the login page we will focus on auth later just create a defaultLayout in /app/layouts and and index page in /pages with empty content
+
+**Logic:**
+
+Sidebase auth started to cause more problems than it solves. As i was running out of time and tokens i had to stop it and focus on teh real solution.
+
+**Answer 8:**
+
+created 5 todos:
+1. Remove sidebase-auth
+2. Clean nuxt.config.ts and auth config
+3. Create deault layout
+4. Create index page

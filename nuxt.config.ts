@@ -3,6 +3,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  future: {
+    compatibilityVersion: 4,
+  },
+
   runtimeConfig: {
     databaseUrl: process.env.DATABASE_URL ?? '',
   },
@@ -16,7 +20,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@prisma/nuxt',
-    '@sidebase/nuxt-auth',
-    'shadcn-nuxt'
-  ]
+    'shadcn-nuxt',
+  ],
 })
