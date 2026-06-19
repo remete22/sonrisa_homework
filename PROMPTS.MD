@@ -192,3 +192,90 @@ The main channel logic build up with the grill me skill to make it 100% as i wan
 **Answer 9:**
 
 Asked a few questions and after answering those started to work.
+
+----
+
+**Prompt 9:**
+
+Now create a page for subscriptions and create a header menu that let's the user to jumop between channels and subscriptions. Don't create any content for the page at the moment. Add the menu to the layout.
+
+**Logic:**
+
+Basis for subscription handling.
+
+**Answer 9:**
+
+Did the requested changes, but the subscription page didn't load. After checking i realized it tried to force fetch data on first load and the router got confised.
+
+----
+
+**Prompt 10:**
+
+use useAsyncData and useFetch to fetch data on the client don't default back to $fetch
+
+**Logic:**
+
+Forcing the Nuxt way of fetching data
+
+**Answer 10:**
+
+After a few retries did the change eventually (tried to sneek in a few $fetch on client side code after told to not do so 2 extra times)
+
+----
+
+**Prompt 11:**
+
+OK the issue still stands so scrap the page for now.
+
+DO it in tabs:
+1. tab is the channelés
+2. tab is subscriptions.
+
+Every user has a subscription. The subscriptions should be extended with channels. Use a dropdown combobox for that with the channels as options.
+
+Grill me if you need moree info
+
+**Logic:**
+
+I had no time to debug why the router behaved weirdly so i defaulted back to routerless option.
+
+**Answer 11:**
+
+Implemented the new tab solution.
+
+----
+
+**Prompt 12:**
+
+can you add a test channel for times here are my credentials: {{ pasted in image }}
+
+**Logic:**
+
+At least one test channel should be available
+
+**Answer 12:**
+
+Added times to the database and updated the seeder
+
+----
+
+**Prompt 13:**
+
+Write an extensive documentation in README.md. It should have:
+The requirement
+The tech stack
+The current solution
+A tech debt wich includes:
+    - authentication and authorization
+    - debuging router behaviour
+    - reintroducing header and layout
+    - writing tests to cover the current codebase
+    - implementing cron job to actually send the email or call Slack webhook
+
+**Logic:**
+
+The isn't going to be better with 10 more minutes of endless bug chasing and letting AI to handle this many things was an error on my part. Writing a documentation where i lay out what is planned to the future and what bugs i need to fix is the best i can do.
+
+**Answer 13:**
+
+Did the documentation as asked.

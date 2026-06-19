@@ -3,6 +3,8 @@ import type { Channel } from '~/stores/channels'
 
 const store = useChannelsStore()
 
+defineProps<{ loading?: boolean }>()
+
 const emit = defineEmits<{
   edit: [channel: Channel]
   delete: [id: number]
@@ -11,7 +13,7 @@ const emit = defineEmits<{
 
 <template>
   <div
-    v-if="store.loading"
+    v-if="loading"
     class="py-16 text-center text-gray-400 text-sm"
   >
     Loading channels…

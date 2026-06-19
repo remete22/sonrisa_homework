@@ -44,6 +44,24 @@ async function main() {
     },
   })
 
+  // Seed NYT news channel
+  await prisma.newsChannels.upsert({
+    where: { channelId: 1 },
+    update: {
+      name: 'New York Times – Top Stories',
+      url: 'https://api.nytimes.com/svc/topstories/v2/home.json',
+      username: process.env['NYT_API_KEY'] ?? '',
+      secret: process.env['NYT_API_SECRET'] ?? '',
+    },
+    create: {
+      name: 'New York Times – Top Stories',
+      url: 'https://api.nytimes.com/svc/topstories/v2/home.json',
+      username: process.env['NYT_API_KEY'] ?? '',
+      secret: process.env['NYT_API_SECRET'] ?? '',
+      isActive: true,
+    },
+  })
+
   console.log('Database seeded successfully')
 }
 

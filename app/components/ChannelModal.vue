@@ -8,14 +8,36 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   'update:open': [value: boolean]
+  saved: []
 }>()
-
-const store = useChannelsStore()
 
 const form = ref({ name: '', url: '', username: '', secret: '', isActive: true })
 const showSecret = ref(false)
 const loading = ref(false)
 const error = ref('')
+
+// ── useFetch: create ─────────────────────────────────────────────────────────
+const createBody = ref({ name: '', url: '', username: null as string | null, secret: null as string | null })
+const { execute: runCreate } = useFetch('/api/v1/channels', {
+  method: 'PUT',
+  body: createBody,
+  immediate: false,
+  watch: false,
+})
+
+// ── useFetch: patch ──────────────────────────────────────────────────────────
+const patchId = ref(0)
+const patchBody = ref<{
+  name: string
+  url: string
+  username: string | null
+  secret: string | null
+  isActive: boolean
+}>({ name: '', url: '', username: null, secret: null, isActive: true })
+const { execute: runPatch } = useFetch(
+  () => `/api/v1/channels/${patchId.value}`,
+  { method: 'PATCH', body: patchBody, immediate: false, watch: false },
+)
 
 watch(
   () => props.open,
@@ -46,18 +68,22 @@ async function submit() {
   loading.value = true
   error.value = ''
   try {
-    const data = {
+    const payload = {
       name: form.value.name,
       url: form.value.url,
       username: form.value.username || null,
       secret: form.value.secret || null,
     }
     if (props.channel) {
-      await store.update(props.channel.channelId, { ...data, isActive: form.value.isActive })
+      patchId.value = props.channel.channelId
+      patchBody.value = { ...payload, isActive: form.value.isActive }
+      await runPatch()
     }
     else {
-      await store.create(data)
+      createBody.value = payload
+      await runCreate()
     }
+    emit('saved')
     close()
   }
   catch {
