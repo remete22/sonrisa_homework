@@ -1,0 +1,38 @@
+{
+  "name": "sonrisa_homework",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:unit": "vitest --project unit",
+    "test:nuxt": "vitest --project nuxt"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.16.0",
+    "@nuxt/icon": "^2.2.3",
+    "@nuxt/test-utils": "^4.0.3",
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "@nuxtjs/i18n": "^10.4.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@pinia/nuxt": "^0.11.3",
+    "@prisma/nuxt": "^0.3.0",
+    "@sidebase/nuxt-auth": "^1.3.0",
+    "eslint": "^10.5.0",
+    "nuxt": "^4.4.8",
+    "pinia": "^3.0.4",
+    "shadcn-nuxt": "^2.7.4",
+    "vue": "^3.5.35",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.4.11",
+    "happy-dom": "^20.10.6",
+    "vitest": "^4.1.9"
+  }
+}
