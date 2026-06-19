@@ -11,7 +11,12 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:unit": "vitest --project unit",
-    "test:nuxt": "vitest --project nuxt"
+    "test:nuxt": "vitest --project nuxt",
+    "db:migrate": "node --env-file=.env node_modules/prisma/build/index.js migrate dev",
+    "db:push": "node --env-file=.env node_modules/prisma/build/index.js db push",
+    "db:seed": "node --env-file=.env node_modules/prisma/build/index.js db seed",
+    "db:generate": "node --env-file=.env node_modules/prisma/build/index.js generate",
+    "db:studio": "node --env-file=.env node_modules/prisma/build/index.js studio"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.16.0",
@@ -23,6 +28,7 @@
     "@pinia/nuxt": "^0.11.3",
     "@prisma/nuxt": "^0.3.0",
     "@sidebase/nuxt-auth": "^1.3.0",
+    "bcryptjs": "^3.0.3",
     "eslint": "^10.5.0",
     "nuxt": "^4.4.8",
     "pinia": "^3.0.4",
@@ -31,8 +37,12 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^26.0.0",
     "@vue/test-utils": "^2.4.11",
     "happy-dom": "^20.10.6",
+    "prisma": "^6.19.3",
+    "tsx": "^4.22.4",
     "vitest": "^4.1.9"
   }
 }
