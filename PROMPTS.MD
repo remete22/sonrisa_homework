@@ -152,7 +152,6 @@ Tried to check on the work by visiting the login page on the dev server but fail
 
 Tried to solve the issue but failed. I had to stop it after a while and put auth on hold.
 
-
 ----
 
 **Prompt 8:**
@@ -170,3 +169,26 @@ created 5 todos:
 2. Clean nuxt.config.ts and auth config
 3. Create deault layout
 4. Create index page
+
+Removed sidebase auth and all server routes. Deleted the packages and the login page. Created teh layout and the index page.
+
+----
+
+**Prompt 9:**
+
+Now let's create the core of the feature. Check #file:TODO.MD for details and grill me if you have any questions. FOllow these steps:
+
+Create a get API for new-channels under /server/api/v1/channels. This should retur all the channels
+Create a get API under /server/api/v1/channels/[id]. This should a channel based on id
+Create a put and patch API at /server/api/v1/channels. These should create or modify a channel based on id
+Create a component: PageHeader: It should include a searchBar that filters through the existing channels and a create new channel button.
+Create a modal that opens when the button is created. There the user can add all information about the channel. Use the #file:schema.prisma for fields.
+Create a channelList component that lists all the channels. There should be a pencil icon and a trashcan icon on all of them. clicking the pencil opens the channel modal and prefills it with the data. clicking the trashcan opens a confirmation modal. If confirmed it soft deletes the channel. sets isActive to false.
+
+**Logic:**
+
+The main channel logic build up with the grill me skill to make it 100% as i want it.
+
+**Answer 9:**
+
+Asked a few questions and after answering those started to work.
